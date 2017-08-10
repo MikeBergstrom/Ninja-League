@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model league.Models.Ninja
+
+<div class="col-sm-6">
+<h1>Registered Ninjas</h1>
+<table class="table">
+    <tr>
+        <th>Ninja Name</th>
+        <th>Home Dojo</th>
+    </tr>
+@foreach(var ninja in @ViewBag.Ninjas){
+    <tr>
+        <td><a href="ninjas/@ninja.id">@ninja.Name</a></td>
+        @if(@ninja.dojo.id >1){
+            <td><a href="dojos/@ninja.dojo.id">@ninja.dojo.Name</a></td>
+        } else {
+            <td>@ninja.dojo.Name</td>
+        }
+    </tr>
+}
+</table>
+</div>
+
+<div class="col-sm-6">
+<h1>Register a Ninja</h1>
+<form class="form" asp-controller="Home" asp-action="AddNinja" method="post">
+    <label asp-for="Name"></label>
+    <input asp-for="Name"><br>
+    <label asp-for="Level"></label>
+    <input asp-for="Level"><br>
+    <label>Dojo</label>
+    <select asp-for="dojo_id">
+        @foreach(var dojo in @ViewBag.Dojos){
+            <option name="dojo_id" value=@dojo.id>@dojo.Name</option>
+        }
+    </select><br>
+    <label asp-for="Description"></label>
+    <input asp-for="Description"><br>
+    <button type="submit">Add</button>
+</form>
+</div>
+

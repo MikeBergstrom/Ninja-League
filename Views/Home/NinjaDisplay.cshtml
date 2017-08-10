@@ -1,0 +1,8 @@
+@{
+    ViewData["Title"] = "Display Ninja";
+}
+<h1>Name: @ViewBag.ninja.Name</h1>
+<h3>Ninja Level - @ViewBag.ninja.Level</h3>
+<h3>Description - @ViewBag.ninja.Description</h3>
+<h3>Current Dojo - @if(@ViewBag.ninja.dojo.id>1){<a href="dojos/@ViewBag.ninja.dojo.id">@ViewBag.ninja.dojo.Name</a>
+}else{@ViewBag.ninja.dojo.Name}</h3>
