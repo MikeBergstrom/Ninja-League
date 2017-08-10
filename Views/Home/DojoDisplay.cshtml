@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Display Dojo";
+}
+<div class="row">
+<h1>@ViewBag.dojo.Name!!</h1>
+<h3>Dojo Location - @ViewBag.dojo.Location</h3>
+<h3>Information - @ViewBag.dojo.Description</h3>
+</div>
+<div class="row">
+<div class="col-sm-6">
+    <table class="table">
+    <tr>
+        <th>Ninja</th>
+        <th>Action</th>
+    </tr>
+        @foreach (var ninja in @ViewBag.dojo.ninjas){
+    <tr>
+        <td>@ninja.Name</td>
+        <td><a href="banish/@ninja.id">Banish!</a></td>
+    </tr>
+}
+    </table>
+</div>
+<div class="col-sm-6">
+
+</div>
+</div>

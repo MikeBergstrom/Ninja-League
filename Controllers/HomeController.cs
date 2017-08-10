@@ -47,5 +47,23 @@ namespace league.Controllers
             ViewBag.ninja = ninjaFactory.GetOne(id);
             return View("NinjaDisplay");
         }
+        [HttpGet]
+        [Route("dojos")]
+        public IActionResult Dojos(){
+            ViewBag.dojos = dojoFactory.GetDojos();
+            return View();
+        }
+        [HttpPost]
+        [Route("AddDojo")]
+        public IActionResult AddDojo(Dojo newDojo){
+            dojoFactory.AddDojo(newDojo);
+            return RedirectToAction ("dojos");
+        }
+        [HttpGet]
+        [Route("dojos/{id}")]
+        public IActionResult ShowDojo(int id){
+            ViewBag.dojo = dojoFactory.GetOne(id);
+            return View("DojoDisplay");
+        }
     }
 }
